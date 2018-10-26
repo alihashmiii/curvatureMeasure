@@ -11,3 +11,6 @@ for measuring curvature along the boundary of an image object
 
 
 ![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/circlefits.png)
+
+
+![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/curvatures.png)
