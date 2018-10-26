@@ -1,5 +1,5 @@
 # curvatureMeasure
-Mathematica script for calculating curvature along the boundary of an image object
+Mathematica script (curvatureMeasure.m) for calculating curvature along the boundary of an image object
 
 #### image
 
