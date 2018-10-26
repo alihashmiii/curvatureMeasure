@@ -3,7 +3,7 @@ for measuring curvature along the boundary of an image object
 
 #### image
 
-![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/image.png)
+![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/input.png)
 
 ## computing curvature
 
