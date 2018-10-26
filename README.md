@@ -12,7 +12,7 @@
 
 ![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/mesh.png)
 
-#### circle fits to a point p, p + N-left, p + N-right
+#### circle fits to a point <sup>p</sup>, p + N-left, p + N-right
 
 ![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/circlefits.png)
 
