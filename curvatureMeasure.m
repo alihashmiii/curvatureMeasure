@@ -58,7 +58,7 @@ midpts = Midpoint/@pairedPts[[All,{1,-1}]];
 regMem = RegionMember[\[ScriptCapitalR],midpts]/.{True-> 1,False-> -1};
 \[Kappa] *= regMem;
 col = ColorData["Rainbow"]/@Rescale[\[Kappa], MinMax[\[Kappa]],{0,1}];
-g = Graphics[{PointSize[0.015],MapThread[Point[#1,VertexColors->#2]&,{sampledPts,col}]}];
+g = Graphics[{PointSize[0.018],MapThread[Point[#1,VertexColors->#2]&,{sampledPts,col}]}];
 Print[Show[HighlightMesh[\[ScriptCapitalR],{Style[1, Black],Style[2,White]}],g,ImageSize->Medium]];
 \[Kappa]
 ]
