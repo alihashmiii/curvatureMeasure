@@ -17,7 +17,7 @@
 
 #### circle fits to a point P<sub>i</sub>, P<sub>i</sub> + N-left, P<sub>i</sub> + N-right
 
-![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/circlefits.png)
+![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/curvatureFitstoShape_cropped.png)
 
 #### curvatures as colormap
 
