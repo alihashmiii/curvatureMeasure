@@ -21,4 +21,4 @@
 
 #### curvatures as colormap
 
-![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/curvatures.png)
+![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/curvatureFinal.png)
