@@ -6,7 +6,7 @@
 
 #### image
 
-![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/input.png)
+![Alt text](https://github.com/alihashmiii/curvatureMeasure/blob/master/for%20ReadMe/inputImage.png)
 
 ## computing curvature
 
