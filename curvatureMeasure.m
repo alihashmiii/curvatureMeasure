@@ -14,6 +14,7 @@ newls=perimeter[[-shift;;]]~Join~perimeter~Join~perimeter[[;;shift]];
 Table[{newls[[i-shift]],newls[[i]],newls[[i+shift]]},{i,1+shift,Length[newls]-shift}]
 ];
 
+(* we can either use the suppressed code below to fit circles or the Built-In Circumsphere to find the fits 
 
 (* from Mathematica StackExchange: courtesy ubpdqn *)
 circfit[pts_]:=Module[{reg,lm,bf,exp,center,rad},
@@ -28,7 +29,7 @@ circlefit[list_][field_]:=field/.list;
 circlefit[list_]["Properties"]:=list/.Rule[field_,_]:>field;
 circlefit/:ReplaceAll[fields_,circlefit[list_]]:=fields/.list;
 Format[circlefit[list_],StandardForm]:=HoldForm[circlefit]["<"<>ToString@Length@list<>">"]
-
+*)
 
 curvatureMeasure[img_Image,div_Integer,shift_Integer]:=Module[{\[ScriptCapitalR],polygon,t,interp,sub,sampledPts,
 pairedPts,circles,\[Kappa],midpts,regMem,col,g,fn},
@@ -41,10 +42,10 @@ sub = Subdivide[interp[[1,1,1]],interp[[1,1,2]],div];
 sampledPts = interp[sub];
 Print[Show[\[ScriptCapitalR],Graphics@Point@sampledPts,ImageSize-> 250]];
 pairedPts = shiftPairs[sampledPts, shift];
-(*
+
 circles = (Circumsphere/@pairedPts)/. Sphere -> Circle;
-*)
-circles = (fn=circfit[#]; Circle[fn["center"],fn["radius"]])&/@pairedPts;
+(*circles = (fn=circfit[#]; Circle[fn["center"],fn["radius"]])&/@pairedPts;*)
+
 Print[Graphics[{{Red,Point@sampledPts},{XYZColor[0,0,0,0.1],circles}}]];
 \[Kappa] = 1/Cases[circles,x_Circle:> Last@x];
 midpts = Midpoint/@pairedPts[[All,{1,-1}]];
