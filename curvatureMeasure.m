@@ -15,15 +15,6 @@ Table[{newls[[i-shift]],newls[[i]],newls[[i+shift]]},{i,1+shift,Length[newls]-sh
 ];
 
 
-(*penalty[c_,radius_,pts_]:=(Map[radius-Norm[#-c]&,pts])^2//Total;
-circleFits[pts_]:=With[{mean = Mean[pts]},
-Block[{res,x,y,rr,points},
-points = # - mean &/@pts;
-res=Minimize[penalty[{x,y},rr,points],{x,y,rr}];
-Circle[{x,y}+mean,rr]/.(res//Last)]
-];*)
-
-
 (* from Mathematica StackExchange: courtesy ubpdqn *)
 circfit[pts_]:=Module[{reg,lm,bf,exp,center,rad},
 reg={2 #1,2 #2,#2^2+#1^2}&@@@pts;
@@ -50,7 +41,9 @@ sub = Subdivide[interp[[1,1,1]],interp[[1,1,2]],div];
 sampledPts = interp[sub];
 Print[Show[\[ScriptCapitalR],Graphics@Point@sampledPts,ImageSize-> 250]];
 pairedPts = shiftPairs[sampledPts, shift];
-(*circles = circleFits/@pairedPts;*)
+(*
+circles = (Circumsphere/@pairedPts)/. Sphere -> Circle;
+*)
 circles = (fn=circfit[#]; Circle[fn["center"],fn["radius"]])&/@pairedPts;
 Print[Graphics[{{Red,Point@sampledPts},{XYZColor[0,0,0,0.1],circles}}]];
 \[Kappa] = 1/Cases[circles,x_Circle:> Last@x];
