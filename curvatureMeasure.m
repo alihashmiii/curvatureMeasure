@@ -9,14 +9,8 @@ curvatureMeasure::usage = "measures the curvature along the image object";
 Begin["`Private`"];
 
 
-shiftPairs[perimeter_,shift_]:=Module[{newls},
-newls=perimeter[[-shift;;]]~Join~perimeter~Join~perimeter[[;;shift]];
-Table[{newls[[i-shift]],newls[[i]],newls[[i+shift]]},{i,1+shift,Length[newls]-shift}]
-];
-
 (* we can either use the suppressed code below to fit circles or the Built-In Circumsphere to find the fits 
-
-(* from Mathematica StackExchange: courtesy ubpdqn *)
+(* circfit function from Mathematica StackExchange: courtesy ubpdqn *)
 circfit[pts_]:=Module[{reg,lm,bf,exp,center,rad},
 reg={2 #1,2 #2,#2^2+#1^2}&@@@pts;
 lm=LinearModelFit[reg,{1,x,y},{x,y}];
@@ -31,6 +25,12 @@ circlefit/:ReplaceAll[fields_,circlefit[list_]]:=fields/.list;
 Format[circlefit[list_],StandardForm]:=HoldForm[circlefit]["<"<>ToString@Length@list<>">"]
 *)
 
+
+shiftPairs[perimeter_,shift_]:=Module[{newls},
+newls=perimeter[[-shift;;]]~Join~perimeter~Join~perimeter[[;;shift]];
+Table[{newls[[i-shift]],newls[[i]],newls[[i+shift]]},{i,1+shift,Length[newls]-shift}]
+];
+
 curvatureMeasure[img_Image,div_Integer,shift_Integer]:=Module[{\[ScriptCapitalR],polygon,t,interp,sub,sampledPts,
 pairedPts,circles,\[Kappa],midpts,regMem,col,g,fn},
 \[ScriptCapitalR] = ImageMesh[img, Method -> "Exact"];
@@ -43,8 +43,8 @@ sampledPts = interp[sub];
 Print[Show[\[ScriptCapitalR],Graphics@Point@sampledPts,ImageSize-> 250]];
 pairedPts = shiftPairs[sampledPts, shift];
 
-circles = (Circumsphere/@pairedPts)/. Sphere -> Circle;
 (*circles = (fn=circfit[#]; Circle[fn["center"],fn["radius"]])&/@pairedPts;*)
+circles = (Circumsphere/@pairedPts)/. Sphere -> Circle;
 
 Print[Graphics[{{Red,Point@sampledPts},{XYZColor[0,0,0,0.1],circles}}]];
 \[Kappa] = 1/Cases[circles,x_Circle:> Last@x];
